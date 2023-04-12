@@ -1,0 +1,33 @@
+
+
+<div *ngIf="isLoading ; else booksBlock" class="loader-box">
+  <img src="../../assets/loader.gif" alt="">
+</div>
+
+<ng-template #booksBlock >
+
+  <div *ngIf="allBooks.length > 0 ; else noBookFoundBlock">
+    <search-table-view
+    [booksList]="allBooks"
+    [subjectName]="subjectName"
+    ></search-table-view>
+  </div>
+
+  <ng-template #noBookFoundBlock>
+    <h1 style="text-align: center;font-size: 25px;">
+      No Books Found
+    </h1>
+    <div style="display: flex;justify-content: center;align-items: center;">
+      <a routerLink="/">
+        <button class="home-btn" >Home</button>
+      </a>
+    </div>
+  </ng-template>
+  
+  <div class="d1-flex">
+    <button [style.visibility]="pageNumber==1? 'hidden': 'visible'" (click)="prevPage()" >Prev</button>
+    <button [style.visibility]="(totoalResults / 10) <= (pageNumber)? 'hidden': 'visible'" (click)="nextPage()">Next</button>
+  </div>
+  
+</ng-template>
+

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { debounceTime, filter } from 'rxjs';
 
 @Component({
@@ -10,7 +11,7 @@ import { debounceTime, filter } from 'rxjs';
 export class HomeComponent implements OnInit {
   bookSearch: FormControl;
 
-  constructor() {
+  constructor(private router:Router) {
     this.bookSearch = new FormControl('');
   }
 
@@ -29,5 +30,12 @@ export class HomeComponent implements OnInit {
       ).
       subscribe((value: string) => {
       });
+  }
+
+  searcBook (event:any):void{
+    if(event.target.value !=""){
+      // console.log(event.target.value)
+      this.router.navigate(["/search",event.target.value ])
+    }
   }
 }

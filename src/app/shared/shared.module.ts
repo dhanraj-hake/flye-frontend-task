@@ -4,8 +4,8 @@ import { TableViewComponent } from './table-view/table-view.component';
 import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
-  declarations: [TableViewComponent],
+  declarations: [],
   imports: [CommonModule, MatIconModule],
-  exports: [TableViewComponent, MatIconModule]
+  exports: [ MatIconModule]
 })
 export class SharedModule {}
